@@ -1,0 +1,133 @@
+.marquee-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  padding: 60px 0;
+  /* overflow: hidden; */
+  width: 100%;
+  padding-top: 150px;
+}
+.ticker{
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+  position: relative; 
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
+  background-color:var(--accent); 
+}
+
+/* Default State (Ticker 1) */
+.ticker::before {
+  content: "";
+  position: absolute;
+  bottom: 100%; /* Shuruat mein niche hidden rahega */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white; /* Hover wala color */
+  transition: bottom 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: -1; /* Text ke peeche rahega */
+}
+
+/* Hover par layer upar aa jayegi */
+.ticker:hover::before {
+  bottom: 0;
+}
+
+/* Jab hover ho toh text color ya baki cheezein change karni ho */
+.ticker:hover {
+  z-index: 10;
+}
+
+/* Default state rotations (GSAP handle kar raha hai toh yahan bas fallback dein) */
+.ticker:first-child,
+.ticker:last-child {
+  transform: rotateZ(5deg) scale(1.1);
+  will-change: transform;
+}
+
+.ticker-wrap {
+  display: flex;
+  width: max-content;
+}
+
+.ticker-text {
+  flex-shrink: 0; /* Isse content squeeze nahi hoga */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-right: 50px;
+  color: #1a1a1a;
+  font-size: clamp(40px, 12vw, 180px);
+  font-weight: 600;
+  font-family: 'Oswald', sans-serif;
+  padding-right: 20px; /* Space between original and clone */
+  transition: color 0.3s ease;
+  padding-top:5px;
+}
+.ticker-text span{
+  font-size: clamp(40px, 12vw, 180px);
+}
+/* Hover par text white ho jaye taaki blue pe dikhe */
+/* .ticker:hover .ticker-text {
+  color: #ffffff;
+} */
+
+
+
+/* Hover par accent white ho jaye */
+.ticker:hover .accent {
+  color: #ffffff;
+}
+.ticker-text {
+  display: flex;
+  align-items: center; /* Image aur text ko vertically center karne ke liye */
+  gap: 20px; /* Text aur image ke beech ka gap */
+  color: #1a1a1a;
+  font-size: clamp(30px, 8vw, 90px); /* Aapka existing size */
+  font-weight: 600;
+  font-family: 'Oswald', sans-serif;
+  padding-right: 20px;
+  line-height: 0.95;
+}
+.ticker-icon {
+  /* 'em' use karne se image font size ke proportional chalti hai */
+  height: 1.3em; 
+  width: auto;
+  size: 100%;
+  padding-bottom: 5px;
+  display: inline-block;
+  margin-right: 80px;
+  margin-left: 80px;
+  /* display: block; */
+  vertical-align: middle;
+  object-fit: contain;
+  /* padding */
+}
+@media (max-width: 763px) {
+  .marquee-section{
+    padding: 0;
+  }
+  .ticker-text span{
+    font-size: 60px
+  }
+  .ticker-icon {
+  /* 'em' use karne se image font size ke proportional chalti hai */
+  height: 1.56em; 
+  width: auto;
+  size: 100%;
+  /* padding-top: 5px; */
+  display: inline-block;
+  margin-right: 30px;
+  margin-left: 30px;
+  /* display: block; */
+  vertical-align: middle;
+  object-fit: contain;
+  /* padding */
+}
+}
+/* Image styling taaki wo text ke size ki dikhe */

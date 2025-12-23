@@ -1,0 +1,108 @@
+/* --- Main Wrapper --- */
+.gsap-scroll-wrapper {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  touch-action: none; /* Crucial for GSAP Observer on mobile */
+}
+
+.gsap-scroll-track {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.scroll-content-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 130vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  will-change: transform;
+  text-align: center;
+}
+.contact-hero-title {
+  font-size: clamp(40px, 10vw, 150px);
+  color: white;
+  margin: 0;
+  line-height: 1.1;
+  padding: auto 20%;
+}
+
+.contact-hero-subtitle {
+  color: #aaa;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  max-width: 600px;
+  margin: 20px auto 40px;
+  padding: 0 20px;
+}
+
+.con-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.text-label {
+  color: white;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.con-text {
+  display: flex;
+  gap: 30px;
+}
+
+.icons {
+  color: white;
+  font-size: 60px; /* Default Desktop size */
+  transition: all 0.3s ease;
+}
+
+.icons:hover {
+  color: #7EF3FF;
+  transform: scale(1.1);
+}
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 768px) {
+  .gsap-scroll-track{
+    height: 60vh;
+  }
+  .contact-hero{
+    padding: 0 10%;
+  }
+  .icons {
+    font-size: 45px; /* Smaller icons for mobile */
+  }
+  .contact-hero-title{
+    font-size: clamp(40px, 16vw, 150px);
+  }
+  .scroll-content-block{
+    line-height: 0;
+    justify-content: space-evenly;
+  }
+  .con-text {
+    gap: 20px;
+  }
+  
+  .text-label {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+  }
+  .con-container{
+    margin-top: 0;
+  }
+}
+

@@ -1,0 +1,540 @@
+
+.portfolio {
+  padding-top: 100px;
+  transition: background-color 0.5s ease;
+}
+
+/* Section Headers */
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-dark);
+  opacity: 0.8;
+  margin-top: 1rem;
+}
+
+/* Services Section */
+.services-section {
+  padding: 6rem 0;
+  background-color: var(--background);
+}
+
+.services-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+}
+
+.service-card {
+  background: var(--background);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: width 0.4s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.service-card:hover::before {
+  width: 100%;
+}
+
+
+
+.service-title {
+  margin-bottom: 1rem;
+  /* font-weight: 400; */
+  color: #fff;
+  font-size: 1.75rem;
+  font-weight: 600;
+  transform: translateY(20px);
+}
+
+
+.service-image-container {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.service-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scroll Stretch Effect - Ready for GSAP ScrollTrigger */
+.service-card:hover .service-image {
+  transform: scale(1.05);
+}
+
+/* This class is ready for GSAP animation:
+   - Default height: 200px
+   - On scroll: animate to 500px height
+   - Smooth easing with ScrollTrigger
+*/
+/* .scroll-stretch-image { */
+  /* GSAP will animate the height property */
+/* } */
+
+/* Process Section */
+.process-section {
+  padding: 6rem 0;
+  background-color: #fafafa;
+}
+
+.process-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.process-timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+}
+
+.process-step {
+  position: relative;
+  padding: 2rem;
+  background: var(--background);
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.process-step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.process-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary);
+  opacity: 0.2;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.process-title {
+  margin-bottom: 0.75rem;
+}
+
+.process-description {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+/* Quote Section */
+.quote-section {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, rgba(150, 25, 25, 0.05) 0%, rgba(126, 243, 255, 0.05) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.quote-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  text-align: center;
+}
+
+.quote-title {
+  margin-bottom: 1.5rem;
+}
+
+.quote-description {
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.quote-cta {
+  display: inline-block;
+  padding: 1.25rem 3rem;
+  background-color: var(--primary);
+  color: var(--background);
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(150, 25, 25, 0.2);
+}
+
+.quote-cta:hover {
+  background-color: #7a1414;
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px var(--accent), 0 6px 25px rgba(150, 25, 25, 0.3);
+}
+
+/* Team Section */
+.team-section {
+  padding: 6rem 0;
+  background-color: var(--background);
+  position: relative;
+}
+
+.team-container {
+  width: 100%;
+  /* max-width: 1000px; */
+  /* margin: 0 40px; */
+  padding: 0 3rem;
+}
+
+.team-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.team-member {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  /* cursor: pointer; */
+  transition: all 0.3s ease;
+}
+
+.team-member:hover {
+  padding-left: 1rem;
+  border-bottom-color: var(--primary);
+}
+
+.team-member-name {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--pure-black);
+  transition: color 0.3s ease;
+}
+
+.team-member:hover .team-member-name {
+  color: var(--primary);
+}
+
+.team-member-role {
+  font-size: 1.125rem;
+  color: var(--text-dark);
+  opacity: 0.7;
+}
+
+.team-preview {
+  position: fixed;
+  width: 200px;
+  height: 250px;
+  pointer-events: none;
+  z-index: 1000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  animation: teamPreviewFadeIn 0.3s ease;
+}
+
+.team-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.service-image-container {
+  position: relative;
+}
+
+.service-title-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0)
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes teamPreviewFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .process-timeline {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio {
+    padding-top: 80px;
+  }
+
+  .services-section,
+  .process-section,
+  .quote-section,
+  .team-section {
+    padding: 4rem 0;
+  }
+
+  .services-container,
+  .process-container,
+  .quote-container,
+  .team-container {
+    padding: 0 1.5rem;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .process-timeline {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .team-member-name {
+    font-size: 1.5rem;
+  }
+
+  .team-member-role {
+    font-size: 1rem;
+  }
+
+  .team-preview {
+    width: 150px;
+    height: 200px;
+  }
+
+  .quote-title {
+    font-size: 2.5rem;
+  }
+
+  .quote-description {
+    font-size: 1.125rem;
+  }
+}
+/* Member Detail Overlay Styling */
+.member-detail-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.4s ease;
+}
+
+.member-detail-card {
+  background: #fff;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #f4f4f4;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.close-btn:hover { background: #e0e0e0; }
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  width: 100%;
+}
+
+.detail-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  object-fit: cover;
+  
+}
+
+.detail-content {
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.detail-role {
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail-name {
+  font-size: 3rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: #000;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 2rem;
+}
+
+.detail-contact {
+  margin-bottom: 2rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #666;
+  margin-bottom: 0.8rem;
+  transition: color 0.3s;
+}
+
+.contact-item:hover { color: var(--primary); }
+
+.detail-socials {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.detail-socials a {
+  color: #000;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.detail-socials a:hover {
+  transform: translateY(-3px);
+  color: var(--primary);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Fix for Detail Card */
+@media (max-width: 768px) {
+  .detail-grid { grid-template-columns: 1fr; }
+  .detail-image img { min-height: 200px; }
+  .detail-content { padding: 2rem; }
+  .detail-name { font-size: 2rem; }
+      
+  }
+
+  @media (max-width:600px) {
+        .detail-image img { height: 250px;
+          object-fit: cover;
+  /* object-position: top; */
+  transform: scale(1);  }
+  }
+/* Make team-member look clickable */
+.team-member {
+  cursor: pointer;
+}
+body.modal-open {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Modal transition ko smooth banane ke liye */
+.member-detail-overlay {
+  /* ... existing styles ... */
+  will-change: opacity;
+}
+
+.member-detail-card {
+  /* ... existing styles ... */
+  will-change: transform, opacity;
+}
+.services-section,
+.process-section,
+.team-section {
+  padding: 6rem 0;
+  background-color: transparent !important; /* Important lagana pad sakta hai agar purani property override karni ho */
+  transition: background-color 0.5s ease;}

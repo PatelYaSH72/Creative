@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Lausanne";
+  src: url("./assets/fonts/Lausanne-300.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  font-family: "Lausanne",sans-serif;
+}

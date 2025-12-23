@@ -1,0 +1,165 @@
+:root {
+  --primary: #961919;
+  --background: #ffffff;
+  --text-dark: #222222;
+  --pure-black: #000000;
+  --accent: #7EF3FF;
+}
+
+.expand-nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  /* transform-origin center rakhein taaki charo taraf sath mein faile */
+  transform-origin: center top; 
+  background: var(--background);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden; /* Ye content ko bahar nikalne se rokega animation ke waqt */
+  z-index: 1000;
+  
+  /* Important: CSS transition ko disable karein taaki GSAP se clash na ho */
+  transition: none;
+}
+
+.nav-inner {
+  height: 56px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: var(--pure-black);
+  text-transform: lowercase;
+}
+
+.agency-name {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--primary); /* Deep Red Highlight */
+  text-align: center;
+}
+
+.menu-btn {
+  /* background: var(--pure-black); */
+  background-color: white;
+  color: var(--pure-black);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 29px;
+  /* cursor: pointer; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.menu-btn:hover {
+  color: var(--primary);
+}
+
+/* EXPANDED MENU */
+.nav-menu {
+ padding: 20px 30px;
+  /* display: none; GSAP handle karega isse */
+  opacity: 0;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.Clogo{
+  width: 30px;
+  height: 35px;
+}
+.CCfullLogo{
+  width: 100px;
+  height: auto;
+}
+.nav-menu li {
+  font-size: 24px;
+  font-weight: 700;
+  padding: 12px 0;
+  color: var(--text-dark);
+  /* cursor: pointer; */
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.nav-menu li:last-child {
+  border-bottom: none;
+}
+
+.nav-menu li:hover {
+  color: var(--primary);
+  padding-left: 8px;
+}
+
+/* Specific Highlight for CTA */
+.nav-menu li.highlight {
+  color: var(--primary);
+  position: relative;
+}
+
+.nav-menu li.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 40px;
+  height: 4px;
+  background: var(--accent); /* Cyan Accent line */
+}
+/* ... (Aapka purana CSS rahega) ... */
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .expand-nav {
+    top: 10px; /* Thoda kam margin top se */
+  }
+
+  .nav-inner {
+    padding: 0 15px;
+  }
+
+  .CCfullLogo {
+    width: 80px; /* Logo thoda chota */
+  }
+
+  .Clogo {
+    width: 25px;
+    height: 30px;
+  }
+
+  .nav-menu {
+    padding: 15px 20px;
+  }
+
+  .nav-menu li {
+    font-size: 18px; /* Font size chota mobile ke liye */
+    padding: 10px 0;
+  }
+
+  /* Agar text lamba ho toh center adjust karne ke liye */
+  .agency-name {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+}
+
+/* Very Small Devices (Optional) */
+@media (max-width: 350px) {
+    .agency-name {
+        display: none; /* Bahut chote mobile par middle text hide kar sakte hain space ke liye */
+    }
+}
