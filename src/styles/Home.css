@@ -1,3 +1,7 @@
+/* =====================
+   HERO SECTION
+===================== */
+
 .home {
   min-height: 100vh;
 }
@@ -5,177 +9,91 @@
 .hero {
   min-height: 100vh;
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 120px 0 80px;
-  background-color: var(--background);
+  /* background-color: var(--background); */
   position: relative;
   overflow: hidden;
 }
 
-/* Aurora Lights Effect */
-.aurora-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  overflow: hidden;
-  z-index: 0;
-  opacity: 1;
-}
-
-.aurora {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  filter: blur(5px);
-  mix-blend-mode: screen;
-  animation-duration: 20s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-}
-
-.aurora-1 {
-  background: linear-gradient(
-    45deg,
-    transparent 20%,
-    var(--accent) 90%,
-    var(--primary) 60%,
-    transparent 80%
-  );
-  animation-name: aurora-1-movement;
-  /* opacity: 0.6; */
-}
-
-.aurora-2 {
-  background: linear-gradient(
-    -45deg,
-    transparent 50%,
-    var(--primary) 50%,
-    var(--accent) 90%,
-    transparent 90%
-  );
-  animation-name: aurora-2-movement;
-  animation-duration: 25s;
-  /* opacity: 0.5; */
-}
-
-.aurora-3 {
-  background: linear-gradient(
-    90deg,
-    transparent 30%,
-    var(--accent) 90%,
-    var(--primary) 50%,
-    var(--accent) 90%,
-    transparent 90%
-  );
-  animation-name: aurora-3-movement;
-  animation-duration: 30s;
-  /* opacity: 0.4; */
-}
-
-@keyframes aurora-1-movement {
-  0%, 100% {
-    transform: translate(0%, 0%) rotate(0deg) scale(1);
-  }
-  25% {
-    transform: translate(20%, 10%) rotate(45deg) scale(1.2);
-  }
-  50% {
-    transform: translate(-10%, 20%) rotate(90deg) scale(1.1);
-  }
-  75% {
-    transform: translate(10%, -10%) rotate(135deg) scale(1.3);
-  }
-}
-
-@keyframes aurora-2-movement {
-  0%, 100% {
-    transform: translate(0%, 0%) rotate(180deg) scale(1);
-  }
-  33% {
-    transform: translate(-20%, 15%) rotate(225deg) scale(1.3);
-  }
-  66% {
-    transform: translate(15%, -20%) rotate(270deg) scale(1.1);
-  }
-}
-
-@keyframes aurora-3-movement {
-  0%, 100% {
-    transform: translate(0%, 0%) rotate(90deg) scale(1);
-  }
-  20% {
-    transform: translate(10%, -15%) rotate(120deg) scale(1.2);
-  }
-  40% {
-    transform: translate(-15%, 10%) rotate(150deg) scale(1.4);
-  }
-  60% {
-    transform: translate(20%, 5%) rotate(180deg) scale(1.1);
-  }
-  80% {
-    transform: translate(-10%, -10%) rotate(210deg) scale(1.3);
-  }
-}
+/* =====================
+   HERO CONTAINER
+===================== */
 
 .hero-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 3rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
+  max-width: 1500px;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  position: relative;
-  z-index: 1;
 }
 
-.hero-left {
+/* =====================
+   HERO CONTENT
+===================== */
+
+.hero-content h1{
+  text-align: center;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  width: 100%;
   animation: fadeInUp 1s ease-out;
+  text-transform: uppercase;
+  color: var(--primary);
 }
 
 .hero-title {
-  margin-bottom: 0.5rem;
+  /* font-size: clamp(6rem, 16vw, 14rem); */
+  line-height: 1.1;
+  margin: 0;
+  color: #fff;
+  mix-blend-mode: difference;
 }
 
 .hero-title-highlight {
-  color: var(--primary);
-  display: block;
+  color: #fff;
 }
 
 .hero-description {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
   line-height: 1.8;
   color: var(--text-dark);
   opacity: 0.85;
+  max-width: 600px;
+  margin: 0 auto;
 }
+
+/* =====================
+   CTA BUTTON
+===================== */
 
 .hero-cta {
   display: inline-block;
   padding: 1rem 2.5rem;
-  background-color: var(--primary);
-  color: var(--background);
   font-size: 1.125rem;
   font-weight: 600;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  align-self: flex-start;
-  box-shadow: 0 4px 20px rgba(150, 25, 25, 0.2);
+  border-radius: 50px;
+  text-decoration: none;
+  background-color: var(--primary);
+  color: #fff;
+  mix-blend-mode: difference;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .hero-cta:hover {
-  background-color: #7a1414;
-  transform: translateY(-2px);
-  box-shadow: 0 0 30px var(--accent), 0 6px 25px rgba(150, 25, 25, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(var(--primary-rgb), 0.4);
 }
 
+/* =====================
+   HERO IMAGE
+===================== */
+
 .hero-right {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -192,10 +110,13 @@
   width: 100%;
   height: auto;
   object-fit: contain;
-  position: relative;
   z-index: 2;
   filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.1));
 }
+
+/* =====================
+   ACCENT BLOBS
+===================== */
 
 .accent-blob {
   position: absolute;
@@ -211,7 +132,6 @@
   height: 300px;
   top: -50px;
   right: -50px;
-  animation-delay: 0s;
 }
 
 .accent-blob-2 {
@@ -222,11 +142,14 @@
   animation-delay: 3s;
 }
 
-/* Animations */
+/* =====================
+   ANIMATIONS
+===================== */
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -235,12 +158,8 @@
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes float {
@@ -252,30 +171,19 @@
   }
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .hero-container {
-    gap: 4rem;
-  }
+/* =====================
+   RESPONSIVE
+===================== */
 
+@media (max-width: 1024px) {
   .hero-title {
     font-size: 3.5rem;
-  }
-
-  .hero-description {
-    font-size: 1.125rem;
   }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: 100px 0 60px;
-  }
-
-  .hero-container {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    padding: 0 1.5rem;
+    padding: 100px 1.5rem 60px;
   }
 
   .hero-title {
@@ -293,15 +201,5 @@
 
   .hero-image-wrapper {
     max-width: 350px;
-  }
-
-  .accent-blob-1 {
-    width: 200px;
-    height: 200px;
-  }
-
-  .accent-blob-2 {
-    width: 150px;
-    height: 150px;
   }
 }
