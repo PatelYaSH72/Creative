@@ -85,8 +85,8 @@ const Home = () => {
   return (
     <div className="home-container">
   <section className="hero-section">
-    <Aurora colorStops={['#4fd0ffc4', '#7b7e7eb3', '#db7272ff']}
-      amplitude={0.6} blend={0.2} speed={2} brightness={0.8} />
+    <Aurora colorStops={['#4fd0ff', '#ffffffff',  '#961919']}
+      amplitude={0.8} blend={0.2} speed={2} brightness={0.8} />
     
     <h1 className="hero-title">
       DESIGN THE <br /> FUTURE.
