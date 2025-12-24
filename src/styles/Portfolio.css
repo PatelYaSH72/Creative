@@ -1,6 +1,5 @@
 
 .portfolio {
-  padding-top: 100px;
   transition: background-color 0.5s ease;
 }
 
@@ -19,7 +18,6 @@
 
 /* Services Section */
 .services-section {
-  padding: 6rem 0;
   background-color: var(--background);
 }
 
@@ -401,7 +399,7 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  background: #f4f4f4;
+  /* background: #f4f4f4; */
   border: none;
   border-radius: 50%;
   padding: 10px;
@@ -410,7 +408,7 @@
   transition: background 0.3s;
 }
 
-.close-btn:hover { background: #e0e0e0; }
+
 
 .detail-grid {
   display: grid;

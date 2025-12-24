@@ -1,9 +1,9 @@
 .portfolio {
-  padding-top: 100px;
+  /* padding-top: 100px; */
   transition: background-color 0.5s ease;
 }
 .team-section {
-  padding: 6rem 0;
+  /* padding: 6rem 0; */
   background-color: var(--background);
   position: relative;
 }

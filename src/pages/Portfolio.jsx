@@ -2,12 +2,6 @@ import React, { useContext, useState } from "react";
 import "../styles/Portfolio.css";
 import { useEffect } from "react";
 import { gsap } from "gsap";
-import tulseeImg from "../assets/imgs/1.jpg";
-import vishwarajsihnImg from "../assets/imgs/2.jpg";
-import rajvardhansihnImg from "../assets/imgs/3.jpg";
-import YashImg from "../assets/imgs/4.jpg";
-import { X, Linkedin, Twitter, Mail, Phone, Instagram } from "lucide-react";
-import TeamMember from "../components/TeamMember";
 import { MyContext } from "../Context/SectionContext";
 
 export default function Portfolio() {
@@ -54,35 +48,7 @@ export default function Portfolio() {
   }, []);
   
 
-  // const services = [
-  //   {
-  //     id: 1,
-  //     icon: "🎨",
-  //     title: "Brand Identity",
-  //     description:
-  //       "Crafting unique visual identities that tell your brand story and resonate with your audience.",
-  //     image:
-  //       "https://images.unsplash.com/photo-1636247497842-81ee9c80f9df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicmFuZGluZyUyMGRlc2lnbiUyMG1vY2t1cHxlbnwxfHx8fDE3NjYyMjg4NjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  //   },
-  //   {
-  //     id: 2,
-  //     icon: "💻",
-  //     title: "Web Development",
-  //     description:
-  //       "Building responsive, high-performance websites with modern technologies and best practices.",
-  //     image:
-  //       "https://images.unsplash.com/photo-1643116774075-acc00caa9a7b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMGNvZGV8ZW58MXx8fHwxNzY2MjI3NTgwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  //   },
-  //   {
-  //     id: 3,
-  //     icon: "📱",
-  //     title: "UI/UX Design",
-  //     description:
-  //       "Designing intuitive and engaging user experiences that delight and convert.",
-  //     image:
-  //       "https://images.unsplash.com/photo-1615220367990-1940567341f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMGRlc2lnbiUyMHdvcmtzcGFjZXxlbnwxfHx8fDE3NjYzMDY4MzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  //   },
-  // ];
+ 
 
   const process = [
     {
@@ -199,7 +165,7 @@ export default function Portfolio() {
       {/* Team List Section */}
       
 
-      <TeamMember/>
+      {/* <TeamMember/> */}
     </div>
   );
 }

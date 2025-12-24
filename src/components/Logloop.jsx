@@ -16,7 +16,7 @@ const imageLogos = [
 
 function LogLoop() {
   return (
-    <div style={{ height: '300px', position: 'relative', overflow: 'hidden'}}>
+    <div style={{ height: '200px', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'end'}}>
       {/* Horizontal logo loop */}
       <LogoLoop
         logos={techLogos}

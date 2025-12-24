@@ -7,6 +7,7 @@ import Aurora from '../components/Aurora.light';
 import LogLoop from '../components/Logloop';
 import { useNavigate } from 'react-router-dom';
 import { Navigation } from 'lucide-react';
+import TeamMember from '../components/TeamMember';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -84,7 +85,7 @@ const Home = () => {
   return (
     <div className="home-container">
   <section className="hero-section">
-    <Aurora colorStops={['#4fd0ffc4', '#7b7e7eb3', '#96191984']}
+    <Aurora colorStops={['#4fd0ffc4', '#7b7e7eb3', '#db7272ff']}
       amplitude={0.6} blend={0.2} speed={2} brightness={0.8} />
     
     <h1 className="hero-title">
@@ -102,6 +103,7 @@ const Home = () => {
   </section>
 
   <LogLoop />
+  <TeamMember/>
 </div>
 
   );
