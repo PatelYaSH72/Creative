@@ -81,7 +81,7 @@ const TeamMember = () => {
           </div>
 
           <div className="team-list">
-            {team.map((member) => (
+            {team?.map((member) => (
               <div
                 key={member.id}
                 className="team-member"

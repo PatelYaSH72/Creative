@@ -21,7 +21,7 @@ export default function App() {
     <Router>
       {loading && <Preloader onFinish={() => setLoading(false)} />}
 
-      {!loading && (
+     
         <>
           {/* ✅ Lenis only once */}
           <SmoothScroll />
@@ -40,7 +40,7 @@ export default function App() {
             {/* <Footer /> */}
           </div>
         </>
-      )}
+      
     </Router>
   );
 }
