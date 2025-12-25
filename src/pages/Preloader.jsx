@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
-import "../styles/Preloader.css";
+import "../styles/preloader.css";
 import TextShuffle from "../components/TextShuffle";
 
 const Preloader = ({ onFinish }) => {
@@ -29,7 +29,7 @@ const Preloader = ({ onFinish }) => {
         .to(pathRef.current, {
           duration: 0.5,
           // delay: 0.9,
-          attr: { d: "M0 600 Q720 1000 1440 600 L1440 0 L0 0 Z" },
+          attr: { d: "M0 0 Q720 1000 1440 0 L1440 0 L0 0 Z" },
           ease: "power3.inOut",
         })
 
