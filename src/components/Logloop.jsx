@@ -16,6 +16,11 @@ const imageLogos = [
 
 function LogLoop() {
   return (
+    <>
+    <div className="section-header" style={{marginTop:"5%", marginBottom:"6%"}}>
+            <h2>Our collaborations </h2>
+            {/* <p className="section-subtitle">Randomly generated themes based on profile photography</p> */}
+     </div>
     <div style={{ height: '200px', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'end'}}>
       {/* Horizontal logo loop */}
       <LogoLoop
@@ -37,6 +42,7 @@ function LogLoop() {
       {/* Example vertical loop */}
       
     </div>
+    </>
   );
 }
 

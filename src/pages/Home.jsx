@@ -8,6 +8,7 @@ import LogLoop from '../components/Logloop';
 import { useNavigate } from 'react-router-dom';
 import { Navigation } from 'lucide-react';
 import TeamMember from '../components/TeamMember';
+import Testimonials from '../components/Testimonials/Testimonials';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -103,6 +104,7 @@ const Home = () => {
   </section>
 
   <LogLoop />
+  <Testimonials/>
   <TeamMember/>
 </div>
 

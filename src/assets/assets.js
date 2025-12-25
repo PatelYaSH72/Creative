@@ -153,3 +153,68 @@ export const teamDetail = [
       socials: { linkedin: "https://www.linkedin.com/in/yash-patel72010/", twitter: "https://www.instagram.com/_yash_2k4?igsh=MTluN2FsZmN3YWs0OA==" },
     },
   ];
+
+export  const testimonialsContent = [
+    {
+      id:1,
+      name: "Rohan Mehta",
+      position: "Founder",
+      company: "FinMark Consulting",
+      description: "It never felt like we were just getting designs. The founder really understood what we were trying to build and guided us through every step.",
+    },
+    {
+      id:2,
+      name: "Aditi Shah",
+      position: "Operations Lead",
+      company: "AxisGrowth",
+      description: "Working with the Creative Clause team was easy. Everything was organised, timelines were clear, and we always knew what was happening next.",
+    },
+    {
+      id:3,
+      name: "Kunal Verma",
+      position: "Business Consultant",
+      company: "ClearPath Advisors",
+      description: "They don’t design blindly. Every suggestion came with a clear reason, which made us trust their process.",
+    },
+    {
+      id:4,
+      name: "Neha Kapoor",
+      position: "Co-Founder",
+      company: "Urban Thread Co",
+      description: "The website came together smoothly. Clean execution, clear communication, and no unnecessary back-and-forth.",
+    },
+    {
+      id:5,
+      name: "Sarthak Jain",
+      position: "Founder",
+      company: "GrowthLoop",
+      description: "Creative Clause felt more like a partner than a service provider. They genuinely cared about the outcome.",
+    },
+    // {
+    //   id:2,
+    //   name: "rajvardhan",
+    //   position: "CEO, Tech Solutions",
+    //   company: "Tech Solutions",
+    //   description: "Creative Clause transformed our brand identity and website, resulting in a 30% increase in engagement and a significant boost in sales. Their team's creativity and professionalism are unmatched.",
+    // },
+    // {
+    //   id:3,
+    //   name: "rajvardhan",
+    //   description: "Creative Clause transformed our brand identity and website, resulting in a 30% increase in engagement and a significant boost in sales. Their team's creativity and professionalism are unmatched.",
+    // },
+    // {
+    //   id:4,
+    //   name: "rajvardhan",
+    //   description: "Creative Clause transformed our brand identity and website, resulting in a 30% increase in engagement and a significant boost in sales. Their team's creativity and professionalism are unmatched.",
+    // },
+    // {
+    //   id:5,
+    //   name: "rajvardhan",
+    //   description: "Creative Clause transformed our brand identity and website, resulting in a 30% increase in engagement and a significant boost in sales. Their team's creativity and professionalism are unmatched.",
+    // },
+    // {
+    //   id:6,
+    //   name: "rajvardhan",
+    //   description: "Creative Clause transformed our brand identity and website, resulting in a 30% increase in engagement and a significant boost in sales. Their team's creativity and professionalism are unmatched.",
+    // },
+  ]

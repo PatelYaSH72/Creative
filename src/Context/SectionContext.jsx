@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import {teamDetail} from "../assets/assets.js";
 import {servicesDetail} from "../assets/assets.js";
+import {testimonialsContent} from "../assets/assets.js";
 
 // 1. Context Create Karein
 export const MyContext = createContext();
@@ -9,17 +10,20 @@ export const MyContext = createContext();
 export const MyProvider = ({ children }) => {
   const [team, setTeam] = useState(null);
   const [services, setServices] = useState(null);
+  const [testimonialsContentData, setTestimonialsContentData] = useState(null);
 
    useEffect(()=>{
       setTeam(teamDetail),
-      setServices(servicesDetail)
+      setServices(servicesDetail),
+      setTestimonialsContentData(testimonialsContent)
    },[team])
 
   console.log(team);
   
   const value = {
     team,
-    services
+    services,
+    testimonialsContentData
   };
 
   return (

@@ -296,79 +296,7 @@
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
-  .services-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-  }
 
-  .process-timeline {
-    gap: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .portfolio {
-    padding-top: 80px;
-  }
-
-  .services-section,
-  .process-section,
-  .quote-section,
-  .team-section {
-    padding: 4rem 0;
-  }
-
-  .services-container,
-  .process-container,
-  .quote-container,
-  .team-container {
-    padding: 0 1.5rem;
-  }
-
-  .section-header {
-    margin-bottom: 3rem;
-  }
-
-  .section-header h2 {
-    font-size: 2.5rem;
-  }
-
-  .section-subtitle {
-    font-size: 1.125rem;
-  }
-
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .process-timeline {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .team-member-name {
-    font-size: 1.5rem;
-  }
-
-  .team-member-role {
-    font-size: 1rem;
-  }
-
-  .team-preview {
-    width: 150px;
-    height: 200px;
-  }
-
-  .quote-title {
-    font-size: 2.5rem;
-  }
-
-  .quote-description {
-    font-size: 1.125rem;
-  }
-}
 /* Member Detail Overlay Styling */
 .member-detail-overlay {
   position: fixed;
@@ -496,21 +424,7 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Mobile Fix for Detail Card */
-@media (max-width: 768px) {
-  .detail-grid { grid-template-columns: 1fr; }
-  .detail-image img { min-height: 200px; }
-  .detail-content { padding: 2rem; }
-  .detail-name { font-size: 2rem; }
-      
-  }
 
-  @media (max-width:600px) {
-        .detail-image img { height: 250px;
-          object-fit: cover;
-  /* object-position: top; */
-  transform: scale(1);  }
-  }
 /* Make team-member look clickable */
 .team-member {
   cursor: pointer;
@@ -536,3 +450,86 @@ body.modal-open {
   padding: 6rem 0;
   background-color: transparent !important; /* Important lagana pad sakta hai agar purani property override karni ho */
   transition: background-color 0.5s ease;}
+
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .process-timeline {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio {
+    /* padding-top: 80px; */
+  }
+  .detail-grid { grid-template-columns: 1fr; }
+  .detail-image img { min-height: 200px; }
+  .detail-content { padding: 2rem; }
+  .detail-name { font-size: 2rem; }
+  .services-section,
+  .process-section,
+  .quote-section,
+  .team-section {
+    padding: 4rem 0;
+  }
+
+  .services-container,
+  .process-container,
+  .quote-container,
+  .team-container {
+    padding: 0 1.5rem;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .process-timeline {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .team-member-name {
+    font-size: 1.5rem;
+  }
+
+  .team-member-role {
+    font-size: 1rem;
+  }
+
+  .team-preview {
+    width: 150px;
+    height: 200px;
+  }
+
+  .quote-title {
+    font-size: 2.5rem;
+  }
+
+  .quote-description {
+    font-size: 1.125rem;
+  }
+}
+ @media (max-width:600px) {
+        .detail-image img { height: 250px;
+          object-fit: cover;
+  /* object-position: top; */
+  transform: scale(1);  }
+  }
