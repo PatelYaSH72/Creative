@@ -58,7 +58,7 @@
 .hero-title {
   padding-top: 80px;
   font-size: clamp(4.5rem, 12vw, 10rem);
-  font-weight: 900;
+  font-weight: bolder;
   color: var(--pure-black);
   line-height: 1.1;
   margin-bottom: 20px;
