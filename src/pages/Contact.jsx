@@ -45,7 +45,7 @@ export default function Contact() {
         targetY -= self.deltaY * 0.8;
       } else {
         // Mobile speed ko balance kiya gaya hai
-        targetY += self.velocityY * 0.6; 
+        targetY += self.velocityY * 0.8; 
       }
     },
     // onPress ko hata diya gaya hai stuttering fix karne ke liye
@@ -71,9 +71,9 @@ export default function Contact() {
       <div className='con-container' >
         <span className='text-label'>Follow us</span>
         <div className='con-text'>
-          <Link href="https://www.instagram.com/the.creativeclause"><FaInstagram className='icons' /></Link>
-          <Link href="#"><FaFacebookSquare className='icons' /></Link>
-          <Link href="https://www.linkedin.com/company/creativeclause/"><FaLinkedin className='icons' /></Link>
+          <a href="https://www.instagram.com/the.creativeclause"><FaInstagram className='icons' /></a>
+          <a href="#"><FaFacebookSquare className='icons' /></a>
+          <a href="https://www.linkedin.com/company/creativeclause/"><FaLinkedin className='icons' /></a>
         </div>
       </div>
     </div>
