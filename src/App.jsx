@@ -22,9 +22,9 @@ export default function App() {
 
   return (
     <Router>
-      {loading && <Preloader onFinish={() => setLoading(false)} />}
+       <Preloader  />
         
-     
+    
         <>
         <ToastContainer position="top-right" theme="light" />
           {/* ✅ Lenis only once */}
