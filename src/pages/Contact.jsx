@@ -82,11 +82,11 @@ export default function Contact() {
       <div className='con-container' >
         <span className='text-label'>Follow us</span>
         <div className='con-text'>
-          <Link href="https://www.instagram.com/the.creativeclause"><FaInstagram className='icons' /></Link>
-          <Link href="#"><FaFacebookSquare className='icons' /></Link>
-          <Link href="https://www.linkedin.com/company/creativeclause/"><FaLinkedin className='icons' /></Link>
+          <Link to="https://www.instagram.com/the.creativeclause"><FaInstagram className='icons' /></Link>
+          <Link to="#"><FaFacebookSquare className='icons' /></Link>
+          <Link to="https://www.linkedin.com/company/creativeclause/"><FaLinkedin className='icons' /></Link>
         </div>
-      </div>
+      </div>to
     </div>
   );
 
