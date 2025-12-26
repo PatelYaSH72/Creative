@@ -4,8 +4,10 @@
   width: 100%;
   overflow: hidden;
   background-color: black;
-  position: relative; /* ✅ FIX */
-  touch-action: pan-y; /* ✅ FIX */
+  position: fixed;
+  top: 0;
+  left: 0;
+  touch-action: none; /* Crucial for GSAP Observer on mobile */
 }
 
 .gsap-scroll-track {
