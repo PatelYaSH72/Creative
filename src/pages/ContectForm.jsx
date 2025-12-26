@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+
 import { motion } from 'framer-motion';
 import styles from '../styles/ContactForm.module.css'; 
 import { toast } from 'react-toastify';
+import emailjs from "@emailjs/browser";
+
 
 const ContactForm = () => {
+
+  const formRef = useRef();
+
   const [formData, setFormData] = useState({
     fullName: '', businessName: '', contactNumber: '', email: '',
     service: '', budget: '', message: ''
@@ -22,9 +28,41 @@ const ContactForm = () => {
   };
 
   const onSubmit = (e) => {
-    e.preventDefault();
-    toast.success("Project Inquiry Sent!");
-  };
+  e.preventDefault();
+
+  emailjs.send(
+    "service_0gnmyhi",     // service_xxxxx
+    "template_qr9kbl5",    // template_xxxxx
+    {
+      fullName: formData.fullName,
+      businessName: formData.businessName,
+      contactNumber: formData.contactNumber,
+      email: formData.email,
+      service: formData.service,
+      budget: formData.budget,
+      message: formData.message,
+    },
+    "PNvdW4dxNAsyOWbIs"      // public key
+  )
+  .then(() => {
+    toast.success("Inquiry sent successfully!");
+    setFormData({
+      fullName: '',
+      businessName: '',
+      contactNumber: '',
+      email: '',
+      service: '',
+      budget: '',
+      message: ''
+    });
+  })
+  .catch((error) => {
+    console.error(error);
+    toast.error("Failed to send inquiry");
+  });
+};
+
+
 
   return (
     <div className={styles.viewportWrapper}>
@@ -47,8 +85,15 @@ const ContactForm = () => {
 
         {/* RIGHT PANEL - Text is Dark here */}
         <div className={styles.panelRight}>
-          <form className={styles.responsiveForm} onSubmit={onSubmit}>
-            
+          <form  ref={formRef} className={styles.responsiveForm} onSubmit={onSubmit}>
+            <input type="hidden" name="fullName" value={formData.fullName} />
+<input type="hidden" name="businessName" value={formData.businessName} />
+<input type="hidden" name="contactNumber" value={formData.contactNumber} />
+<input type="hidden" name="email" value={formData.email} />
+<input type="hidden" name="service" value={formData.service} />
+<input type="hidden" name="budget" value={formData.budget} />
+<input type="hidden" name="message" value={formData.message} />
+
             <div className={styles.flexRow}>
               <div className={styles.formGroup}>
                 <label>Identify</label>
