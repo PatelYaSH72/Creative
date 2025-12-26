@@ -45,7 +45,7 @@ export default function Contact() {
         targetY -= self.deltaY * 0.8;
       } else {
         // Mobile speed ko balance kiya gaya hai
-        targetY += self.velocityY * 0.3; 
+        targetY += self.velocityY * 0.6; 
       }
     },
     // onPress ko hata diya gaya hai stuttering fix karne ke liye
