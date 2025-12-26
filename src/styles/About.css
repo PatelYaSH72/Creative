@@ -1,213 +1,105 @@
-.about {
-  min-height: 100vh;
+/* --- Global Wrapper --- */
+.about-page-wrapper {
+  background-color: #ffffff;
+  overflow-x: hidden;
 }
 
-/* Hero Section */
-.about-hero {
-  padding: 180px 0 100px;
-  background: linear-gradient(135deg, rgba(150, 25, 25, 0.03) 0%, rgba(126, 243, 255, 0.03) 100%);
-}
-
-.about-hero-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 3rem;
-  text-align: center;
-}
-
-.about-hero-title {
-  margin-bottom: 1.5rem;
-  animation: fadeInUp 0.8s ease-out;
-}
-
-.about-hero-subtitle {
-  font-size: 1.5rem;
-  color: var(--text-dark);
-  opacity: 0.8;
-  animation: fadeInUp 1s ease-out;
-}
-
-/* Vertical Infinite Scroll Section */
-.vertical-scroll-container {
-  height: 600px;
-  overflow: hidden;
+/* --- Sticky Animation Section --- */
+.about-sticky-container {
   position: relative;
-  background-color: var(--background);
-  padding: 4rem 0;
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
-  );
+  min-height: 180vh; /* Scroll length for title + para reveal */
+  background-color: #ffffff;
 }
 
-.vertical-scroll-content {
+.title-wrapper {
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  padding: 0 3rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 1; /* Title sabse peeche rahega */
+  pointer-events: none;
 }
 
-.scroll-text-block {
-  padding: 2rem 0;
+.about-title {
+  font-size: clamp(4rem, 18vw, 15rem);
+  font-weight: 900;
+  color: #000000;
+  margin: 0;
+  text-transform: uppercase;
+  will-change: transform, opacity;
 }
 
-.scroll-text {
-  font-size: 3.5rem;
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--pure-black);
-  letter-spacing: -1px;
+.para-wrapper {
+  position: relative;
+  z-index: 2; /* Para title ke upar scroll karega */
+  margin-top: -30vh; /* Dono ke beech ka overlap */
+  padding: 0 10% 20vh 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.reveal-container {
+  max-width: 900px;
   text-align: center;
+  color: #000;
 }
 
-.scroll-paragraph-block {
-  padding: 1rem 0;
-}
-
-.scroll-paragraph {
-  font-size: 1.25rem;
-  line-height: 2;
-  color: var(--text-dark);
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-  opacity: 0.85;
-}
-
-/* Values Section */
+/* --- Values Section (Layered Correctly) --- */
 .about-values {
-  padding: 6rem 0;
-  background-color: #fafafa;
+  position: relative;
+  z-index: 10; /* Sabse upar taaki sticky title iske peeche rahe */
+  background-color: #f9f9f9;
+  padding: 100px 0;
+  border-top: 1px solid #eeeeee;
 }
 
 .values-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 3rem;
+  padding: 0 2rem;
 }
 
 .values-title {
   text-align: center;
+  font-size: 3.5rem;
   margin-bottom: 4rem;
+  font-weight: 800;
+  color: #000;
 }
 
 .values-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
 }
 
 .value-card {
-  background: var(--background);
+  background: #ffffff;
   padding: 3rem 2rem;
-  border-radius: 16px;
+  border-radius: 20px;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  transition: transform 0.3s ease;
 }
 
 .value-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-10px);
 }
 
 .value-icon {
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin-bottom: 1.5rem;
 }
 
-.value-card h3 {
-  margin-bottom: 1rem;
-  color: var(--primary);
-}
-
-.value-card p {
-  font-size: 1rem;
-  opacity: 0.85;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .scroll-text {
-    font-size: 3rem;
-  }
-
-  .scroll-paragraph {
-    font-size: 1.125rem;
-  }
-}
-
+/* --- Responsive Fixes --- */
 @media (max-width: 768px) {
-  .about-hero {
-    padding: 140px 0 80px;
-  }
-
-  .about-hero-container {
-    padding: 0 1.5rem;
-  }
-
-  .about-hero-title {
-    font-size: 2.5rem;
-  }
-
-  .about-hero-subtitle {
-    font-size: 1.25rem;
-  }
-
-  .vertical-scroll-container {
-    height: 500px;
-    padding: 3rem 0;
-  }
-
-  .vertical-scroll-content {
-    padding: 0 1.5rem;
-    gap: 2rem;
-  }
-
-  .scroll-text {
-    font-size: 2rem;
-  }
-
-  .scroll-paragraph {
-    font-size: 1rem;
-  }
-
-  .about-values {
-    padding: 4rem 0;
-  }
-
-  .values-container {
-    padding: 0 1.5rem;
-  }
-
-  .values-title {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-  }
-
-  .values-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .value-card {
-    padding: 2.5rem 2rem;
-  }
+  .about-sticky-container { min-height: 150vh; }
+  .about-title { font-size: 5rem; }
+  .para-wrapper { margin-top: -45vh;
+  padding-bottom: 0; }
+  .values-title { font-size: 2.5rem; }
+  .about-values{padding: 0;}
 }
