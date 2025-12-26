@@ -40,6 +40,8 @@ export default function Contact() {
     const obs = Observer.create({
       target: window,
       type: "wheel,touch,pointer",
+      passive: false,
+
       onUp: () => {
         // Jab user upar scroll kare (content niche jaye)
         gsap.to(".ticker", {
@@ -67,9 +69,14 @@ export default function Contact() {
           targetY += self.velocityY * 0.6;
         }
       }, // Screen touch karte hi rukne ke liye onPress use karein
-      onPress: () => {
-        targetY = yTrack; // Target ko current position par set kar diya, jisse scroll ruk jayega
-      },
+      onPress: (self) => {
+  if (self.event.pointerType === "touch") {
+    targetY = yTrack;
+  }
+},
+onRelease: () => {
+  targetY = yTrack;
+},
       tolerance: 10,
       preventDefault: true,
     });
