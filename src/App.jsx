@@ -13,6 +13,9 @@ import Preloader from "./pages/Preloader";
 
 import "./styles/globals.css";
 import CustomCursor from "./components/CustomCursor";
+import ContactForm from "./pages/ContectForm.jsx";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -20,9 +23,10 @@ export default function App() {
   return (
     <Router>
       {loading && <Preloader onFinish={() => setLoading(false)} />}
-
+        
      
         <>
+        <ToastContainer position="top-right" theme="light" />
           {/* ✅ Lenis only once */}
           <SmoothScroll />
 
@@ -35,6 +39,7 @@ export default function App() {
                 <Route path="/portfolio" element={<Portfolio />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/contact-form" element={<ContactForm />} />
               </Routes>
             </main>
             {/* <Footer /> */}

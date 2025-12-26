@@ -5,11 +5,11 @@ export default function Card1({ item }) {
   return (
     <div className="card-inner">
       <h3>{item.name}</h3>
-      <span>{item.position}</span>
-      <span>{item.company}</span>
+      <div className="info">
+        <span >{item.position}:</span>
+        <span>{item.company}</span>
+      </div>
       <p>{item.description}</p>
-
     </div>
   );
 }
-

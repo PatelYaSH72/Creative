@@ -39,7 +39,7 @@ const Navbar = () => {
       // Mobile par 320px ya 80%, desktop par 380px
       width: isMobile ? "300px" : "380px",
       height: "56px",
-      borderRadius: "12px",
+      borderRadius: "15px",
       duration: 0.6,
       ease: "power4.inOut",
     });

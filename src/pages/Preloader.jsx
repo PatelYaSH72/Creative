@@ -23,7 +23,7 @@ const Preloader = ({ onFinish }) => {
       tl.fromTo(
         textRef.current,
         { opacity: 0, y: 20 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power4.out", delay: 0.5 }
+        { y: 0, opacity: 1, duration: 0.8, ease: "power4.out", delay: 0.3 }
       )
 
         .to(pathRef.current, {
@@ -35,8 +35,8 @@ const Preloader = ({ onFinish }) => {
 
         .to(pathRef.current, {
           duration: 1.4,
-          delay: 0.1,
-          attr: { d: "M0 0 Q720 0 1440 0 L1440 0 L0 0 Z" },
+          // delay: 0.1,
+          attr: { d: "M0 0 Q720 1000 1440 0 L1440 0 L0 0 Z" },
           ease: "power4.out",
         })
 
@@ -64,7 +64,7 @@ const Preloader = ({ onFinish }) => {
             "ક્રિએટિવ ક્લોઝ",
             "ஆக்கப்பூர்வமான விதி",
             "সৃজনশীল দফা",
-            "Cre8ive Clause",
+            "CRE8TIVE CLAUSE",
           ]}
         />
       </div>
@@ -76,7 +76,7 @@ const Preloader = ({ onFinish }) => {
       >
         <path
           ref={pathRef}
-          fill="black" /* Ensure fill color matches your design */
+          fill="white" /* Ensure fill color matches your design */
           d="M0 0 Q720 1000 1440 0 L1440 0 L0 0 Z"
         />
       </svg>

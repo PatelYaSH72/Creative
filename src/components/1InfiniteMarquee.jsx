@@ -56,7 +56,7 @@ const InfiniteMarquee = () => {
   }, []);
 
   return (
-    <Link to={'/#'} className="marquee-section" ref={containerRef} >
+    <Link to={'/contact-form'} className="marquee-section" ref={containerRef} >
       <div className="ticker" data-duration="25">
         <div className="ticker-wrap">
           <div className="ticker-text">
