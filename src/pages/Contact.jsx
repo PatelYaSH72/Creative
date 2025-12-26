@@ -24,7 +24,7 @@ export default function Contact() {
 
     const render = () => {
       // Mobile ke liye lerp factor ko aur slow kiya hai (0.05) taaki ekdum se jhatka na lage
-      const lerpFactor = isMobile ? 0.05 : 0.1; 
+      const lerpFactor = isMobile ? 0.09 : 0.1; 
       yTrack += (targetY - yTrack) * lerpFactor;
 
       items.forEach((item, i) => {
@@ -52,7 +52,7 @@ export default function Contact() {
         } else {
           // 1. Velocity ko 0.03 se multiply kiya taaki speed kam ho jaye
           // 2. self.deltaY ka use karke movement ko aur control kiya
-          targetY += self.velocityY * 0.08; 
+          targetY += self.velocityY * 0.06; 
         }
       },
       // Screen touch karte hi rukne ke liye onPress use karein
