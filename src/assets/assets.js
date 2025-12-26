@@ -146,7 +146,7 @@ export const teamDetail = [
       role: "Web Developer",
       image: YashImg,
       description:
-        "Visionary leader with a passion for innovation and strategic growth.",
+        "I can code you in your website, and yes its possible.",
       email: "yashpatel01.work@gmail.com",
       phone: "+91 72010 07221",
       bgColor: "#fffaf0",
