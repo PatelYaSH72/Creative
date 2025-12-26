@@ -64,7 +64,7 @@ export default function Contact() {
         } else {
           // 1. Velocity ko 0.03 se multiply kiya taaki speed kam ho jaye
           // 2. self.deltaY ka use karke movement ko aur control kiya
-          targetY += self.velocityY * 0.08;
+          targetY += self.velocityY * 0.6;
         }
       }, // Screen touch karte hi rukne ke liye onPress use karein
       onPress: () => {
