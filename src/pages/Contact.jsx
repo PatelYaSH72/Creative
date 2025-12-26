@@ -4,6 +4,7 @@ import { FaInstagram, FaFacebookSquare, FaLinkedin } from "react-icons/fa";
 import { gsap } from 'gsap';
 import { Observer } from 'gsap/Observer';
 import InfiniteMarquee1 from '../components/1InfiniteMarquee.jsx';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(Observer);
 
@@ -11,63 +12,52 @@ export default function Contact() {
   const trackRef = useRef(null);
 
  useEffect(() => {
-    const items = gsap.utils.toArray(".scroll-content-block");
-    const isMobile = window.innerWidth < 768;
-    const gap = isMobile ? 120 : 300;
-    const itemHeight = window.innerHeight + gap;
+  const items = gsap.utils.toArray(".scroll-content-block");
+  const isMobile = window.innerWidth < 768;
+  const gap = isMobile ? 100 : 300; // Mobile gap thoda kam
+  const itemHeight = window.innerHeight + gap;
 
-    let yTrack = 0;
-    let targetY = 0;
+  let yTrack = 0;
+  let targetY = 0;
 
-    const totalHeight = itemHeight * items.length;
-    const wrap = gsap.utils.wrap(-itemHeight, totalHeight - itemHeight);
+  const totalHeight = itemHeight * items.length;
+  const wrap = gsap.utils.wrap(-itemHeight, totalHeight - itemHeight);
 
-    const render = () => {
-      // Mobile ke liye lerp factor ko aur slow kiya hai (0.05) taaki ekdum se jhatka na lage
-      const lerpFactor = isMobile ? 0.1 : 0.1; 
-      yTrack += (targetY - yTrack) * lerpFactor;
+  const render = () => {
+    // Lerp ko constant rakhein smooth transition ke liye
+    const lerpFactor = 0.08; 
+    yTrack += (targetY - yTrack) * lerpFactor;
 
-      items.forEach((item, i) => {
-        const rawY = yTrack + i * itemHeight;
-        const cycledY = wrap(rawY);
-        gsap.set(item, { y: cycledY });
-      });
-    };
-
-    gsap.ticker.add(render);
-
-    const obs = Observer.create({
-      target: window,
-      type: "wheel,touch,pointer",onUp: () => {
-    // Jab user upar scroll kare (content niche jaye)
-    gsap.to(".ticker", { rotateZ: 5, duration: 0.8, ease: "power2.out", overwrite: true });
-  },
-  onDown: () => {
-    // Jab user niche scroll kare (content upar jaye)
-    gsap.to(".ticker", { rotateZ: -5, duration: 0.8, ease: "power2.out", overwrite: true });
-  },
-      onChange: (self) => {
-        if (self.event.type === "wheel") {
-          targetY -= self.deltaY * 0.8;
-        } else {
-          // 1. Velocity ko 0.03 se multiply kiya taaki speed kam ho jaye
-          // 2. self.deltaY ka use karke movement ko aur control kiya
-          targetY += self.velocityY * 0.02; 
-        }
-      },
-      // Screen touch karte hi rukne ke liye onPress use karein
-      onPress: () => {
-        targetY = yTrack; // Target ko current position par set kar diya, jisse scroll ruk jayega
-      },
-      tolerance: 10,
-      preventDefault: true,
+    items.forEach((item, i) => {
+      const rawY = yTrack + i * itemHeight;
+      const cycledY = wrap(rawY);
+      gsap.set(item, { y: cycledY, force3D: true }); // force3D: true performance boost deta hai
     });
+  };
 
-    return () => {
-      obs.kill();
-      gsap.ticker.remove(render);
-    };
-  }, []);
+  gsap.ticker.add(render);
+
+  const obs = Observer.create({
+    target: window,
+    type: "wheel,touch,pointer",
+    onChange: (self) => {
+      if (self.event.type === "wheel") {
+        targetY -= self.deltaY * 0.8;
+      } else {
+        // Mobile speed ko balance kiya gaya hai
+        targetY += self.velocityY * 0.6; 
+      }
+    },
+    // onPress ko hata diya gaya hai stuttering fix karne ke liye
+    tolerance: 5, // Sensitivity thodi badhai
+    preventDefault: true,
+  });
+
+  return () => {
+    obs.kill();
+    gsap.ticker.remove(render);
+  };
+}, []);
 
 
 
@@ -81,9 +71,9 @@ export default function Contact() {
       <div className='con-container' >
         <span className='text-label'>Follow us</span>
         <div className='con-text'>
-          <a href="#"><FaInstagram className='icons' /></a>
-          <a href="#"><FaFacebookSquare className='icons' /></a>
-          <a href="#"><FaLinkedin className='icons' /></a>
+          <Link href="https://www.instagram.com/the.creativeclause"><FaInstagram className='icons' /></Link>
+          <Link href="#"><FaFacebookSquare className='icons' /></Link>
+          <Link href="https://www.linkedin.com/company/creativeclause/"><FaLinkedin className='icons' /></Link>
         </div>
       </div>
     </div>
