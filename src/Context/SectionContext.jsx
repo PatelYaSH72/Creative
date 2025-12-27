@@ -8,7 +8,7 @@ export const MyContext = createContext();
 
 // 2. Provider Component Banayein
 export const MyProvider = ({ children }) => {
-  const [team, setTeam] = useState(null);
+  const [team, setTeam] = useState([]);
   const [services, setServices] = useState(null);
   const [testimonialsContentData, setTestimonialsContentData] = useState(null);
 

@@ -17,7 +17,7 @@ const imageLogos = [
 function LogLoop() {
   return (
     <>
-    <div className="section-header" style={{marginTop:"5%", marginBottom:"6%"}}>
+    <div className="section-header" style={{marginTop:"5%", marginBottom:"2%"}}>
             <h2>Our collaborations </h2>
             {/* <p className="section-subtitle">Randomly generated themes based on profile photography</p> */}
      </div>

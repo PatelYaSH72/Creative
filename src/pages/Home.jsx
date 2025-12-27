@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 import { Navigation } from 'lucide-react';
 import TeamMember from '../components/TeamMember';
 import Testimonials from '../components/Testimonials/Testimonials';
+// import CounterSection from '../components/Counter';
+import Counter from '../components/Counter';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -77,12 +79,6 @@ const Home = () => {
     });
   };
 
- 
-
-  
-
-  
-
   return (
     <div className="home-container">
   <section className="hero-section">
@@ -104,6 +100,7 @@ const Home = () => {
   </section>
 
   <LogLoop />
+  <Counter/>
   <Testimonials/>
   <TeamMember/>
 </div>

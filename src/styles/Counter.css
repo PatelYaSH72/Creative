@@ -1,0 +1,109 @@
+:root {
+  --primary: #961919;
+  --background: #ffffff;
+  --text-dark: #222222;
+  --pure-black: #000000;
+  --accent: #7EF3FF;
+}
+
+.counter-wrapper {
+  background-color: var(--background);
+  padding: 100px 20px;
+  padding-bottom: 49px;
+  display: flex;
+  justify-content: center;
+  /* Important to prevent scrollbars during animation */
+  overflow: visible; 
+}
+
+.counter-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px; /* Added gap so cards don't touch while scaling */
+  max-width: 1200px;
+  width: 100%;
+  /* Ensures the container doesn't jump */
+  align-items: stretch;
+}
+
+.stat-card {
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 12px; /* Added slight radius for elegance */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Smooth transition for all properties */
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+              box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+              z-index 0s;
+  z-index: 1;
+}
+
+/* Fix for "Pushing" other elements */
+.stat-card:hover {
+  /* Scale slightly less to keep it clean */
+  transform: translateY(-10px) scale(1.03); 
+  /* High Z-index ensures it sits ABOVE the rest of the page */
+  z-index: 50; 
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+}
+
+.accent-line {
+  width: 3px;
+  height: 20px;
+  background: var(--accent);
+  margin-bottom: 25px;
+  transition: all 0.4s ease;
+}
+
+.stat-card:hover .accent-line {
+  /* height: 40px; */
+  background: var(--primary);
+}
+
+.number-container {
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--pure-black);
+  line-height: 0.9;
+  letter-spacing: -2px;
+  margin-bottom: 15px;
+}
+
+.suffix {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid #f0f0f0;
+  padding-left: 15px;
+  margin-top: 10px;
+}
+
+.title-main {
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.title-sub {
+  color: #666666;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+/* Responsive fixes */
+@media (max-width: 1024px) {
+  .counter-container { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .counter-container { grid-template-columns: 1fr; }
+}

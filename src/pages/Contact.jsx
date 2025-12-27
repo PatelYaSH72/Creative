@@ -4,6 +4,7 @@ import { FaInstagram, FaFacebookSquare, FaLinkedin } from "react-icons/fa";
 import { gsap } from 'gsap';
 import { Observer } from 'gsap/Observer';
 import InfiniteMarquee1 from '../components/1InfiniteMarquee.jsx';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(Observer);
 
@@ -81,11 +82,11 @@ export default function Contact() {
       <div className='con-container' >
         <span className='text-label'>Follow us</span>
         <div className='con-text'>
-          <a href="#"><FaInstagram className='icons' /></a>
-          <a href="#"><FaFacebookSquare className='icons' /></a>
-          <a href="#"><FaLinkedin className='icons' /></a>
+          <Link to="https://www.instagram.com/the.creativeclause" target='_blank'><FaInstagram className='icons' /></Link>
+          <Link to="#"><FaFacebookSquare className='icons' /></Link>
+          <Link to="https://www.linkedin.com/company/creativeclause/" target='_blank'><FaLinkedin className='icons' /></Link>
         </div>
-      </div>
+      </div>S
     </div>
   );
 

@@ -23,12 +23,15 @@
 }
 
 .about-title {
-  font-size: clamp(4rem, 18vw, 15rem);
+  font-size: clamp(3.5rem, 10vw, 7rem);
   font-weight: 900;
+  display: flex;
+  gap: 30px;
   color: #000000;
   margin: 0;
   text-transform: uppercase;
   will-change: transform, opacity;
+  transition-duration: 300;
 }
 
 .para-wrapper {
