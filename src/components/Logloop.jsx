@@ -28,7 +28,7 @@ function LogLoop() {
         speed={200}               // speed control
         direction="left"          // left / right
         logoHeight={80}           // icon size
-        gap={50}                  // gap between logos
+        gap={100}                  // gap between logos
         fadeOut
         fadeOutColor="var(--pure-black)"
         scaleOnHover

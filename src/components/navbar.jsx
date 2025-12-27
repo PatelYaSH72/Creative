@@ -55,7 +55,7 @@ const Navbar = () => {
 // ... (return statement same rahega)
 
   return (
-    <div ref={navRef} className="navbar expand-nav">
+    <div ref={navRef} className="navbar expand-nav" style={{zIndex:"10000"}}>
       {/* TOP BAR */}
       <div className="nav-inner">
         {/* LEFT: Logo */}

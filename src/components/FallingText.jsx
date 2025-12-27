@@ -1,135 +1,175 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Matter from 'matter-js';
 
-const FallingText = ({ children, gravity = 2.5, isFallen }) => {
+const FallingText = ({
+  children,
+  className = '',
+  trigger = false,
+  backgroundColor = 'transparent',
+  wireframes = false,
+  gravity = 1,
+  mouseConstraintStiffness = 0.2,
+  audioPath = '/fallingForm.mp3' // Yahan apni audio file ka path dalein
+}) => {
   const containerRef = useRef(null);
-  const engineRef = useRef(null);
-  const runnerRef = useRef(null);
-  const requestRef = useRef(null);
-  const audioRef = useRef(null);
+  const canvasContainerRef = useRef(null);
+  const [effectStarted, setEffectStarted] = useState(false);
 
   useEffect(() => {
-    audioRef.current = new Audio('/fallingForm.mp3');
-    audioRef.current.load();
-    return () => {
-      if (audioRef.current) audioRef.current.pause();
-    };
-  }, []);
+    if (trigger === true) {
+      setEffectStarted(true);
+
+      // AUDIO LOGIC: 500ms delay ke baad play hoga
+      const timer = setTimeout(() => {
+        const audio = new Audio(audioPath);
+        audio.play().catch(err => console.log("Audio play blocked by browser:", err));
+      }, 500);
+
+      return () => clearTimeout(timer); // Cleanup timer
+    } else {
+      setEffectStarted(false);
+      const targets = containerRef.current?.querySelectorAll('.fall-target');
+      if (targets) {
+        targets.forEach(elem => {
+          elem.style.removeProperty('position');
+          elem.style.removeProperty('top');
+          elem.style.removeProperty('left');
+          elem.style.removeProperty('transform');
+          elem.style.removeProperty('width');
+          elem.style.removeProperty('height');
+          elem.style.removeProperty('z-index');
+          elem.style.removeProperty('pointer-events');
+        });
+      }
+    }
+  }, [trigger, audioPath]);
 
   useEffect(() => {
-    if (!isFallen) {
-      cleanUpPhysics();
-      const elements = containerRef.current.querySelectorAll('.fall-target');
-      elements.forEach(el => {
-        el.style.cssText = ""; 
-        el.style.opacity = '1';
-        el.style.pointerEvents = 'auto';
-      });
-      return;
-    }
+    if (!effectStarted) return;
 
-    if (isFallen && audioRef.current) {
-      setTimeout(() => {
-        if (audioRef.current) {
-          audioRef.current.currentTime = 0;
-          audioRef.current.play().catch(() => {});
-          setTimeout(() => audioRef.current && audioRef.current.pause(), 2000);
-        }
-      }, 1000);
-    }
+    const { Engine, Render, World, Bodies, Runner, Mouse, MouseConstraint } = Matter;
 
-    const { Engine, World, Bodies, Runner, Body, Constraint } = Matter;
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
 
     const engine = Engine.create();
-    engineRef.current = engine;
     engine.world.gravity.y = gravity;
 
-    // Floor and Walls
-    const floor = Bodies.rectangle(width / 2, height + 20, width * 5, 60, { isStatic: true });
-    const leftWall = Bodies.rectangle(-50, height / 2, 100, height * 2, { isStatic: true });
-    const rightWall = Bodies.rectangle(width + 50, height / 2, 100, height * 2, { isStatic: true });
+    const render = Render.create({
+      element: canvasContainerRef.current,
+      engine,
+      options: {
+        width: screenWidth,
+        height: screenHeight,
+        background: backgroundColor,
+        wireframes
+      }
+    });
 
-    const elements = containerRef.current.querySelectorAll('.fall-target');
-    const bodiesData = [...elements].map(el => {
-      const rect = el.getBoundingClientRect();
+    const boundaryOptions = {
+      isStatic: true,
+      render: { fillStyle: 'transparent' }
+    };
+    
+    const floor = Bodies.rectangle(screenWidth / 2, screenHeight + 25, screenWidth, 50, boundaryOptions);
+    const leftWall = Bodies.rectangle(-25, screenHeight / 2, 50, screenHeight, boundaryOptions);
+    const rightWall = Bodies.rectangle(screenWidth + 25, screenHeight / 2, 50, screenHeight, boundaryOptions);
+    const ceiling = Bodies.rectangle(screenWidth / 2, -25, screenWidth, 50, boundaryOptions);
+
+    const targets = containerRef.current.querySelectorAll('.fall-target');
+    
+    const wordBodies = [...targets].map(elem => {
+      const rect = elem.getBoundingClientRect();
       const x = rect.left + rect.width / 2;
       const y = rect.top + rect.height / 2;
 
-      // NAVBAR CHECK
-      const isNavbar = el.classList.contains('navbar');
-
+      // PHYSICS LOGIC: 100% SAME
       const body = Bodies.rectangle(x, y, rect.width, rect.height, {
-        restitution: isNavbar ? 0 : 0.2, // Navbar को उछालना नहीं है
-        frictionAir: isNavbar ? 0.05 : 0.02,
-        density: 0.001
+        render: { fillStyle: 'transparent' },
+        restitution: 0,      
+        frictionAir: 0,      
+        friction: 0
       });
 
-      if (isNavbar) {
-        // --- ONLY FOR NAVBAR: HANGING LOGIC ---
-        const pivot = { x: rect.left, y: rect.top }; // Top-Left corner
-        const hangingConstraint = Constraint.create({
-          pointA: pivot,
-          bodyB: body,
-          pointB: { x: -rect.width / 2, y: -rect.height / 2 },
-          stiffness: 1,
-          length: 0
-        });
-        World.add(engine.world, hangingConstraint);
-        // हल्का सा रोटेशन ताकि वो राइट साइड से झुके
-        Body.setAngularVelocity(body, 0.04);
-      } else {
-        // --- FOR ALL OTHER ELEMENTS: NORMAL FALLING ---
-        const randomForceX = (Math.random() - 0.5) * 20;
-        Body.setVelocity(body, { x: randomForceX, y: 5 });
-        Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.2);
-      }
+      Matter.Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.02);
+      
+      elem.style.width = `${rect.width}px`;
+      elem.style.height = `${rect.height}px`;
+      elem.style.position = 'fixed'; 
+      elem.style.zIndex = '9999';
+      elem.style.pointerEvents = 'auto'; 
+      elem.style.cursor = 'grab';
 
-      // Physics to DOM styling
-      el.style.width = `${rect.width}px`;
-      el.style.height = `${rect.height}px`;
-      el.style.position = 'fixed';
-      el.style.left = `${x}px`;
-      el.style.top = `${y}px`;
-      el.style.zIndex = isNavbar ? '10005' : '9999';
-      el.style.pointerEvents = 'none';
-
-      return { el, body };
+      return { elem, body };
     });
 
-    World.add(engine.world, [floor, leftWall, rightWall, ...bodiesData.map(b => b.body)]);
+    const mouse = Mouse.create(render.canvas);
+    const mouseConstraint = MouseConstraint.create(engine, {
+      mouse: mouse,
+      constraint: {
+        stiffness: mouseConstraintStiffness,
+        render: { visible: false }
+      }
+    });
+
+    World.add(engine.world, [floor, leftWall, rightWall, ceiling, mouseConstraint, ...wordBodies.map(wb => wb.body)]);
 
     const runner = Runner.create();
-    runnerRef.current = runner;
     Runner.run(runner, engine);
+    Render.run(render);
 
+    let animationId;
     const updateLoop = () => {
-      bodiesData.forEach(({ body, el }) => {
+      wordBodies.forEach(({ body, elem }) => {
         const { x, y } = body.position;
-        el.style.left = `${x}px`;
-        el.style.top = `${y}px`;
-        el.style.transform = `translate(-50%, -50%) rotate(${body.angle}rad)`;
+        elem.style.left = `${x}px`;
+        elem.style.top = `${y}px`;
+        elem.style.transform = `translate(-50%, -50%) rotate(${body.angle}rad)`;
+        
+        if (body.isStatic) {
+           elem.style.cursor = 'grabbing';
+        }
       });
-      requestRef.current = requestAnimationFrame(updateLoop);
+      Matter.Engine.update(engine);
+      animationId = requestAnimationFrame(updateLoop);
     };
     updateLoop();
 
-    return () => cleanUpPhysics();
-  }, [isFallen, gravity]);
-
-  const cleanUpPhysics = () => {
-    if (runnerRef.current) Matter.Runner.stop(runnerRef.current);
-    if (engineRef.current) {
-      Matter.World.clear(engineRef.current.world);
-      Matter.Engine.clear(engineRef.current);
-    }
-    if (requestRef.current) cancelAnimationFrame(requestRef.current);
-  };
+    return () => {
+      cancelAnimationFrame(animationId);
+      Render.stop(render);
+      Runner.stop(runner);
+      if (render.canvas) render.canvas.remove();
+      World.clear(engine.world);
+      Engine.clear(engine);
+    };
+  }, [effectStarted, gravity, wireframes, backgroundColor, mouseConstraintStiffness]);
 
   return (
-    <div ref={containerRef} style={{ width: '100%', position: 'relative' }}>
-      {children}
+    <div
+      ref={containerRef}
+      className={className}
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: '100%'
+      }}
+    >
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        {children}
+      </div>
+      <div 
+        ref={canvasContainerRef} 
+        style={{ 
+          position: 'fixed', 
+          top: 0, 
+          left: 0, 
+          width: '100vw', 
+          height: '100vh', 
+          zIndex: effectStarted ? 9998 : -1,
+          pointerEvents: effectStarted ? 'auto' : 'none' 
+        }} 
+      />
     </div>
   );
 };

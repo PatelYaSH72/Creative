@@ -101,7 +101,7 @@ export default function Portfolio() {
           </div>
 
           <div className="services-grid">
-            {services.map((service) => (
+            {services?.map((service) => (
               <div
                 key={service.id}
                 className="service-card"

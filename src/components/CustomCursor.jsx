@@ -85,11 +85,11 @@ const CustomCursor = () => {
           position: "fixed",
           width: "40px",
           height: "40px",
-          border: "1.5px solid white", // White rakhein, difference mode isse handle karega
+          border: "1.5px solid white", 
           borderRadius: "50%",
           pointerEvents: "none",
-          zIndex: 9998,
-          mixBlendMode: "difference", // Page color ke hisab se invert karega
+          zIndex: 1000001, // Updated zIndex
+          mixBlendMode: "difference", 
         }}
       />
       
@@ -102,8 +102,8 @@ const CustomCursor = () => {
           width: "20px",
           height: "20px",
           pointerEvents: "none",
-          zIndex: 9999,
-          mixBlendMode: "difference", // Image ko bhi invert karega
+          zIndex: 1000001, // Updated zIndex
+          mixBlendMode: "difference", 
         }}
       >
         <img
@@ -113,7 +113,7 @@ const CustomCursor = () => {
             width: "100%", 
             height: "100%", 
             objectFit: "contain",
-            filter: "invert(1)" // Agar original image black hai, toh invert(1) se wo white mode mein behtar blend hogi
+            filter: "invert(1)" 
           }}
         />
       </div>

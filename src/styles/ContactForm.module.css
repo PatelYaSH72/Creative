@@ -197,7 +197,10 @@
   background: var(--primary);
   transform: translateY(-2px);
 }
-
+/* ContactForm.module.css mein ye add karein */
+.fall-target {
+  display: inline-block;
+}
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .viewportWrapper {
