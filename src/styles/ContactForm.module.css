@@ -1,11 +1,11 @@
 .viewportWrapper {
   /* Premium Light Palette */
-  --bg: #F9F9F7;           /* Soft Ivory Background */
-  --panelLeft: #111111;    /* Obsidian Black for contrast */
-  --primary: #C5A059;      /* Muted Champagne Gold (Accent) */
-  --textMain: #1A1A1A;     /* Deep Charcoal */
-  --textMuted: #757575;    /* Soft Gray */
-  --inputBorder: #E0E0E0;
+  --bg: #f9f9f7; /* Soft Ivory Background */
+  --panelLeft: #111111; /* Obsidian Black for contrast */
+  --primary: #c5a059; /* Muted Champagne Gold (Accent) */
+  --textMain: #1a1a1a; /* Deep Charcoal */
+  --textMuted: #757575; /* Soft Gray */
+  --inputBorder: #e0e0e0;
   --navHeight: 100px;
 
   width: 100%;
@@ -15,7 +15,17 @@
   overflow: hidden;
   display: flex;
 }
-
+.Thanks {
+  font-size: clamp(4.5rem, 10vw, 8.5rem);
+  font-weight: 800;
+  line-height: 0.9;
+  color: #f5f5f3; /* Soft White - Not piercing pure white */
+  letter-spacing: -2px;
+  margin-left: 12%;
+  margin-bottom: 18%;
+  z-index: 100;
+  color: #111111da;
+}
 .layoutSplit {
   display: flex;
   width: 100%;
@@ -50,7 +60,7 @@
   font-size: clamp(3.5rem, 6vw, 5.5rem);
   font-weight: 800;
   line-height: 0.9;
-  color: #F5F5F3; /* Soft White - Not piercing pure white */
+  color: #f5f5f3; /* Soft White - Not piercing pure white */
   letter-spacing: -2px;
 }
 
@@ -124,7 +134,7 @@
 }
 
 .inputField::placeholder {
-  color: #BEBEBE;
+  color: #bebebe;
   font-weight: 300;
 }
 
@@ -190,9 +200,24 @@
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-  .viewportWrapper { height: auto; overflow: visible; }
-  .layoutSplit { flex-direction: column; }
-  .panelLeft { padding: 120px 30px 60px; height: auto; }
-  .panelRight { padding: 60px 30px; height: auto; }
-  .flexRow { flex-direction: column; gap: 25px; }
+  .viewportWrapper {
+    height: auto;
+    overflow: visible;
+  }
+  .layoutSplit {
+    flex-direction: column;
+  }
+  .panelLeft {
+    padding: 120px 30px 60px;
+    height: auto;
+  }
+  .panelRight {
+    padding: 20px 30px;
+    padding-right: 50px;
+    height: auto;
+  }
+  .flexRow {
+    flex-direction: column;
+    gap: 25px;
+  }
 }
