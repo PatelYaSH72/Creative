@@ -24,7 +24,7 @@ const TextShuffle = ({ texts }) => {
     const nextWordTimer = setTimeout(() => {
       setIndex((prev) => prev + 1);
       setVisible(true);
-    }, index === -1 ? 600 : 250); // Transition ke liye extra gap
+    }, index === -1 ? 500 : 150); // Transition ke liye extra gap
 
     return () => {
       clearTimeout(fadeOutTimer);

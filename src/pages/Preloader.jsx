@@ -23,7 +23,7 @@ const Preloader = ({ onFinish }) => {
       tl.fromTo(
         textRef.current,
         { opacity: 0, y: 20 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power4.out", delay: 0.4 }
+        { y: 0, opacity: 1, duration: 0.8, ease: "power4.out",  }
       )
 
         .to(pathRef.current, {
