@@ -7,7 +7,7 @@ import CcfullLogo from "../assets/CC-black.png"
 
 // ... existing imports
 
-const Navbar = () => {
+const Navbar = ({ isFallen }) => {
   const navRef = useRef(null);
   const menuRef = useRef(null);
   const [open, setOpen] = useState(false);
@@ -55,7 +55,7 @@ const Navbar = () => {
 // ... (return statement same rahega)
 
   return (
-    <div ref={navRef} className="navbar expand-nav" style={{zIndex:"10000"}}>
+    <div ref={navRef} className="navbar expand-nav" style={{zIndex:'10000'}}>
       {/* TOP BAR */}
       <div className="nav-inner">
         {/* LEFT: Logo */}

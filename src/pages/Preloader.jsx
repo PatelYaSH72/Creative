@@ -55,7 +55,7 @@ const Preloader = ({ onFinish }) => {
   }, [onFinish]);
 
   return (
-    <div className="loader-wrapper" ref={loaderRef}>
+    <div className="loader-wrapper" ref={loaderRef} style={{zIndex:'10090'}}>
       <div className="loader-text">
         <TextShuffle
           texts={[

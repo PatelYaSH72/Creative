@@ -41,10 +41,10 @@ const SingleCounter = ({ value }) => {
 
 const Counter = () => {
   const stats = [
-    { target: "2020", title: "First Clause", subtitle: "Written" },
-    { target: "20", title: "Remote Team", subtitle: "Members", suffix: "+" },
-    { target: "5", title: "Years of", subtitle: "Experience" },
-    { target: "150", title: "Product", subtitle: "Demos", suffix: "+" },
+    { target: "2020", title: "First Clause Written"},
+    { target: "20", title: "Remote Team Members"},
+    { target: "5", title: "Years of Experience"},
+    { target: "150", title: "Product Demos"},
   ];
 
   return (
@@ -59,14 +59,14 @@ const Counter = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.15, ease: [0.215, 0.61, 0.355, 1] }}
           >
-            <div className="accent-line" />
+            {/* <div className="accent-line" /> */}
             <div className="number-container">
               <SingleCounter value={stat.target} />
-              <span className="suffix">{stat.suffix}</span>
+              {/* <span className="suffix">{stat.suffix}</span> */}
             </div>
             <div className="text-container">
               <span className="title-main">{stat.title}</span>
-              <span className="title-sub">{stat.subtitle}</span>
+             
             </div>
           </motion.div>
         ))}

@@ -27,7 +27,7 @@
 }
 
 .stat-card {
-  padding: 40px;
+  padding: 20px;
   background: #ffffff;
   border-radius: 12px; /* Added slight radius for elegance */
   position: relative;
@@ -42,13 +42,13 @@
 }
 
 /* Fix for "Pushing" other elements */
-.stat-card:hover {
-  /* Scale slightly less to keep it clean */
+/* .stat-card:hover {
+  
   transform: translateY(-10px) scale(1.03); 
-  /* High Z-index ensures it sits ABOVE the rest of the page */
+  
   z-index: 50; 
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
-}
+} */
 
 .accent-line {
   width: 3px;
@@ -80,8 +80,8 @@
 .text-container {
   display: flex;
   flex-direction: column;
-  border-left: 2px solid #f0f0f0;
-  padding-left: 15px;
+  /* border-left: 2px solid #f0f0f0; */
+  /* padding-left: 15px; */
   margin-top: 10px;
 }
 
