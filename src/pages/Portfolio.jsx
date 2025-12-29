@@ -11,7 +11,7 @@ export default function Portfolio() {
   const servicesRef = useRef(null);
 
   const {services} = useContext(MyContext)
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
     const cards = document.querySelectorAll(".service-card");
