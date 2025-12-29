@@ -11,7 +11,7 @@ export default function Portfolio() {
   const servicesRef = useRef(null);
 
   const {services} = useContext(MyContext)
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState('true');
 
   useEffect(() => {
     const cards = document.querySelectorAll(".service-card");
@@ -89,6 +89,12 @@ export default function Portfolio() {
   const handleMouseLeave = () => {
     setHoveredMember(null);
   };
+
+  const handleClick = () => {
+    handleScroll(),
+    setShow("true")
+  }
+
  const handleScroll = () => {
     servicesRef.current?.scrollIntoView({
       behavior: "smooth", // Smooth scroll ke liye
@@ -112,7 +118,7 @@ export default function Portfolio() {
           </div>
 
           <div className="services-grid">
-  {services?.slice(0, show ? 3 : services.length).map((service) => (
+  {services?.slice(0, show === 'false' ? services.length : 3).map((service) => (
 
     <div key={service.id} className="service-card-wrapper">
       <TiltedCard
@@ -138,10 +144,10 @@ export default function Portfolio() {
     </div>
   ))}
 </div>
-        <div onClick={() => setShow(!show)} className="showBtn">
-          {show ? 
-          <span>Show more</span> 
-          : <span onClick={handleScroll}>Show less</span>
+        <div className="showBtn">
+          {show === 'true' ? 
+          <span onClick={() => setShow('false')}>Show more</span> 
+          : <span onClick={handleClick}>Show less</span>
           }
           </div>
         </div>
