@@ -1,12 +1,17 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef } from "react";
 import "../styles/Portfolio.css";
 import { useEffect } from "react";
 import { gsap } from "gsap";
 import { MyContext } from "../Context/SectionContext";
+import TiltedCard from "../components/TitledCard";
+import { span } from "framer-motion/m";
 
 export default function Portfolio() {
 
+  const servicesRef = useRef(null);
+
   const {services} = useContext(MyContext)
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     const cards = document.querySelectorAll(".service-card");
@@ -84,6 +89,12 @@ export default function Portfolio() {
   const handleMouseLeave = () => {
     setHoveredMember(null);
   };
+ const handleScroll = () => {
+    servicesRef.current?.scrollIntoView({
+      behavior: "smooth", // Smooth scroll ke liye
+      block: "start",     // Section ke shuruat mein rukne ke liye
+    });
+  };
 
   return (
     <div
@@ -93,7 +104,7 @@ export default function Portfolio() {
       {/* What We Do Section */}
       <section className="services-section">
         <div className="services-container">
-          <div className="section-header">
+          <div className="section-header" ref={servicesRef}>
             <h2>What We Do</h2>
             <p className="section-subtitle">
               Comprehensive creative solutions tailored to elevate your brand
@@ -101,30 +112,41 @@ export default function Portfolio() {
           </div>
 
           <div className="services-grid">
-            {services?.map((service) => (
-              <div
-                key={service.id}
-                className="service-card"
-                data-service-id={service.id}
-              >
-                <div className="service-image-container">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="service-image"
-                  />
+  {services?.slice(0, show ? 3 : services.length).map((service) => (
 
-                  {/* Hover Title */}
-                  <div className="service-title-overlay">
-                    <h3 className="service-title">{service.title}</h3>
-                  </div>
-                </div>
-              </div>
-            ))}
+    <div key={service.id} className="service-card-wrapper">
+      <TiltedCard
+        imageSrc={service.image}
+        altText={service.title}
+        id={service.id}
+        // Width aur Height ko 100% rakhein taaki wo CSS Grid ko follow kare
+        containerHeight="350px" 
+        containerWidth="100%"
+        imageHeight="100%"
+        imageWidth="100%"
+        rotateAmplitude={15}
+        scaleOnHover={1.05}
+        showMobileWarning={false}
+        showTooltip={false}
+        displayOverlayContent={true}
+        overlayContent={
+          
+             <h3 className="service-card-title">{service.title}</h3>
+          
+        }
+      />
+    </div>
+  ))}
+</div>
+        <div onClick={() => setShow(!show)} className="showBtn">
+          {show ? 
+          <span>Show more</span> 
+          : <span onClick={handleScroll}>Show less</span>
+          }
           </div>
         </div>
       </section>
-
+               
       {/* Our Process Section */}
       <section className="process-section">
         <div className="process-container">

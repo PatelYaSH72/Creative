@@ -1,0 +1,116 @@
+.tilted-card-figure {
+  position: relative;
+  width: 100%; /* Parent ki puri width */
+  perspective: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.tilted-card-mobile-alert {
+  position: absolute;
+  top: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .tilted-card-mobile-alert {
+    display: block;
+  }
+  .tilted-card-caption {
+    display: none;
+  }
+}
+
+.tilted-card-inner {
+  position: relative;
+  width: 100%; /* Card ko inner width 100% deni hai */
+  transform-style: preserve-3d;
+}
+
+.tilted-card-img {
+  display: block;
+  width: 100%; /* Image ab container ke hisaab se stretch hogi */
+  height: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 15px;
+  filter: grayscale(100%);
+  will-change: transform;
+}
+.tilted-card-img:hover {
+  filter: grayscale(0%);
+  transition: filter 0.3s ease;
+}
+.service-card-title {
+  /* 1. Backdrop Filter (Yeh text ke piche blur karega) */
+  /* Dono values 15px-20px ke beech rakhein perfect blur ke liye */
+  background-color: #961919b8; 
+  /* backdrop-filter: blur(15px); */
+  /* -webkit-backdrop-filter: blur(15px);  */
+  
+  /* 2. Semi-Transparent Background */
+  /* Background ko transparent rakhna zaroori hai tabhi blur dikhega */
+
+  /* 3. Shadow & Border */
+  box-shadow: 0 0  10px 10px rgba(156, 156, 156, 0.2); 
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  
+  /* 4. Display Always (No more opacity: 0) */
+  /* position: absolute;
+  top: 25%;
+  left: 25%; */
+  opacity: 1; 
+  padding: 12px 24px;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  
+  /* 5. Static 3D Position */
+  /* Yeh hamesha image se thoda upar hawa mein rahega */
+  transform: translateZ(100px);
+}
+
+/* Hover par koi change na ho isliye humne ':hover' classes hata di hain */
+
+/* Hover par shadow ko thoda solid banane ke liye */
+.tilted-card-inner:hover .service-card-title {
+ /* filter: blur(8px) brightness(0.7); */
+}
+
+.tilted-card-overlay {
+  position: absolute;
+  inset: 0; /* Top, Left, Right, Bottom sab 0 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transform: translateZ(40px); /* 3D effect ke liye thoda upar */
+  pointer-events: none;
+  /* background-color: #2d2d2d7e; */
+}
+
+.tilted-card-caption {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 4px 10px;
+  font-size: 10px;
+  color: #2d2d2d;
+  opacity: 0;
+  z-index: 3;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 20px;
+}

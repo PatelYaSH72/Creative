@@ -36,7 +36,7 @@ const SingleCounter = ({ value }) => {
     }
   }, [isInView, value]);
 
-  return <span ref={ref}>{displayValue.toLocaleString()}</span>;
+  return <span ref={ref}>{displayValue}</span>;
 };
 
 const Counter = () => {
@@ -66,7 +66,7 @@ const Counter = () => {
             </div>
             <div className="text-container">
               <span className="title-main">{stat.title}</span>
-             
+              {/* <span className="title-sub">{stat.subtitle}</span> */}
             </div>
           </motion.div>
         ))}

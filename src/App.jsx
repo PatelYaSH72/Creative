@@ -16,13 +16,15 @@ import CustomCursor from "./components/CustomCursor";
 import ContactForm from "./pages/ContectForm.jsx";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Project from "./pages/Project.jsx";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
 
   return (
+
     <Router>
-       <Preloader  />
+      <Preloader  />
         
     
         <>
@@ -40,6 +42,7 @@ export default function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/contact/contact-form" element={<ContactForm />} />
+                <Route path="/portfolio/project/:id" element={<Project />} />
               </Routes>
             </main>
             {/* <Footer /> */}
